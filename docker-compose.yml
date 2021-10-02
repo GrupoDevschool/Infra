@@ -1,0 +1,22 @@
+version: "3"
+
+services: 
+    front:
+          container_name: dev_front
+          restart: always
+          build: .
+          ports:  
+            - "5000:3000"
+          links:
+            - mongo
+          volumes:
+            - .:/usr/src/app  
+    mongo:
+          container_name: dev_mongo
+          image: mongo
+          ports: 
+            - "27018:27017"
+          logging:
+              driver: none 
+              # tirar os logs do terminal, era log pra caramba... se quiser ler é contigo mesmo..   
+          
